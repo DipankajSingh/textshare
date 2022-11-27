@@ -1,23 +1,24 @@
-import React from 'react'
 import * as fs from 'fs'
 
 function storedata(req, res) {
     if (req.method === "POST") {
-        fs.readFile("database/data.json", 'utf-8', (err, res) => {
-            const data = JSON.parse(res)
-            for (let i = 0; i < data.length; i++) {
-                const user = data[i];
-                console.log(req.body)
-                if (user === req.body.id) {
-                    console.log("success")
+        const dataPath = 'database/data.json'
+        const { id, text } = req.body
+        fs.promises.readFile(dataPath, 'utf-8')
+            .then((v) => {
+                const data = JSON.parse(v)
+                if (id in data) {
+                    data[id].push(text)
+                    fs.promises.writeFile(dataPath, JSON.stringify(data))
+                        .then(() => {
+                            res.status(200).send({ success: true })
+
+                        })
                 }
-            }
-        })
-        res.status(200).json(['post'])
-        console.log(req.body)
+            })
     }
     else {
-        res.status(500).json(['please send only POST requist only 1'])
+        res.status(500).send({ success: false, info: "Only POST Allowed!" })
     }
 }
 
