@@ -2,10 +2,54 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+}
+
+.nav>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Id {
+  position: relative;
+  color: rgb(90, 56, 241);
+  margin-right: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+
+
+.Id::after {
+  content: 'Click To Copy Id!';
+  padding: 8px 13px;
+  width: max-content;
+  color: whitesmoke;
+  top: 1.9rem;
+  transform: translateX(-50%);
+  border-radius: .3rem;
+}
+
+.Id::after,
+.Id::before {
+  background-color: #7c4dff;
+  left: 50%;
+  position: absolute;
 
 }
 
-.nav button {
+.Id::before {
+  content: '';
+  height: 14px;
+  width: 14px;
+  transform:
+    rotate(45deg) translateX(-50%);
+  top: 1.8rem;
+}
+
+
+
+.nav>div>button {
   background-color: transparent;
   border: 2px solid #7c4dff;
   margin: 0;
@@ -19,7 +63,7 @@
   color: #7c4dff;
 }
 
-.nav button:hover {
+.nav>div>button:hover {
   background-color: #7c4dff;
   color: #f3f0e9;
 }
@@ -45,17 +89,18 @@
   left: 5.2rem;
 }
 
-.form {
+.container {
   position: absolute;
   transform: translate(-50%);
   left: 50%;
   height: 2.5rem;
-  top: 30%;
+  top: 45%;
 }
 
 .form div {
   display: flex;
 }
+
 
 .form div input {
   height: 2.5rem;
@@ -86,5 +131,24 @@
 
 .form div button:hover {
   background-color: #7c4dff;
+}
 
+.prompts {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: .3rem;
+}
+
+.promptsText {
+  margin: 0;
+  padding: 0;
+}
+
+.textLabel {
+  position: absolute;
+  top: -1.3rem;
+  margin-left: .5rem;
+  color: rgb(235, 47, 0);
 }

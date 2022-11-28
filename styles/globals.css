@@ -24,7 +24,6 @@ a {
     height: 100vh;
     width: 100vw;
     color: #7c4dff;
-    background: linear-gradient(#f7eeff, #abc2f8) no-repeat;
-    /* background-color: #4f48e4; */
+    background-color: #d4d2f5;
   }
 }
