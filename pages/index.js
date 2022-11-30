@@ -3,10 +3,14 @@ import Send from '../components/Send'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
+
   const [text, setText] = useState("")
-  const [loggedIn, setLoggedIn] = useState()
-  const id = 'hgfhd'
-  const [type, setType] = useState(loggedIn ? 'add' : 'addUser')
+  const [loggedIn, setLoggedIn] = useState(false)
+  const id = loggedIn ? localStorage.getItem('id') : text
+  const [type, setType] = useState()
+  console.log(type, "the type")
+
+
   const saveToJson = async () => {
     const res = await fetch('http://localhost:3000/api/storedata', {
       method: 'POST',
@@ -16,25 +20,35 @@ export default function Home() {
       }
     })
     const data = await res.json()
-    localStorage.setItem('id', text)
-    setLoggedIn(true)
-    console.log(data)
-
+    if (localStorage.getItem("id") == null) {
+      localStorage.setItem('id', text)
+      setLoggedIn(true)
+      setType('add')
+    }
+    console.log(data, loggedIn, id)
   }
+
+
   useEffect(() => {
-    setLoggedIn(localStorage.getItem('id') !== null ? true : false)
     const fetchText = async () => {
       if (localStorage.getItem('id') !== null) {
+        setLoggedIn(true)
         const res = await fetch('http://localhost:3000/api/fetch', {
           method: 'POST',
-          body: JSON.stringify({ id: localStorage.getItem('id') })
+          headers: {
+            'Content-Type': 'application/json',
+            "id": localStorage.getItem("id")
+          }
         })
         const data = await res.json()
         console.log(data)
+        setType('add')
       }
     }
     fetchText()
   }, [])
+
+
   return (<>
     <nav className={styles.nav}>
       <p>
@@ -43,7 +57,10 @@ export default function Home() {
       </p>
       <div>
         <div className={styles.Id}>Dipankaj</div>
-        <button>LogOut</button>
+        <button onClick={() => {
+          localStorage.removeItem("id")
+          setLoggedIn(false)
+        }}>LogOut</button>
       </div>
     </nav>
     <div className={styles.container}>
