@@ -1,13 +1,14 @@
 import styles from '../styles/Home.module.css'
-import Send from '../components/Send'
+import Send from './components/Send'
 import { useEffect, useState } from 'react'
+import Nav from './components/Nav'
 
 export default function Home() {
 
   const [text, setText] = useState("")
   const [loggedIn, setLoggedIn] = useState(false)
   const id = loggedIn ? localStorage.getItem('id') : text
-  const [type, setType] = useState()
+  const [type, setType] = useState('addUser')
   console.log(type, "the type")
 
 
@@ -25,11 +26,13 @@ export default function Home() {
       setLoggedIn(true)
       setType('add')
     }
+    setText('')
     console.log(data, loggedIn, id)
   }
 
 
   useEffect(() => {
+    console.log('rerenderd!')
     const fetchText = async () => {
       if (localStorage.getItem('id') !== null) {
         setLoggedIn(true)
@@ -50,19 +53,7 @@ export default function Home() {
 
 
   return (<>
-    <nav className={styles.nav}>
-      <p>
-        <span>TaxT</span>
-        <span>Share</span>
-      </p>
-      <div>
-        <div className={styles.Id}>Dipankaj</div>
-        <button onClick={() => {
-          localStorage.removeItem("id")
-          setLoggedIn(false)
-        }}>LogOut</button>
-      </div>
-    </nav>
+    <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
     <div className={styles.container}>
       <form method='POST' onSubmit={(e) => e.preventDefault()} className={styles.form}>
         <div>
