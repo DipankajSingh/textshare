@@ -2,7 +2,7 @@ import * as fs from 'fs'
 
 function storedata(req, res) {
     if (req.method === "POST") {
-        const dataPath = 'database/data.json'
+        const dataPath = './database/data.json'
         const { id, text, type } = req.body
         fs.promises.readFile(dataPath, 'utf-8')
             .then((v) => {
