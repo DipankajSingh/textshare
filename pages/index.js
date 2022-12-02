@@ -1,7 +1,8 @@
 import styles from '../styles/Home.module.css'
-import Send from './components/Send'
 import { useEffect, useState } from 'react'
 import Nav from './components/Nav'
+import CopiedText from './components/CopiedText'
+import InputField from './components/InputField'
 
 export default function Home() {
 
@@ -11,9 +12,11 @@ export default function Home() {
   const [type, setType] = useState('addUser')
   console.log(type, "the type")
 
+  const [copiedText, setCopiedText] = useState([])
+
 
   const saveToJson = async () => {
-    const res = await fetch('https://textshare.vercel.app/api/storedata', {
+    const res = await fetch('http://localhost:3000/api/storedata', {
       method: 'POST',
       body: JSON.stringify({ id, text, type }),
       headers: {
@@ -27,7 +30,8 @@ export default function Home() {
       setType('add')
     }
     setText('')
-    console.log(data, loggedIn, id)
+    setCopiedText(data)
+    console.log(copiedtext)
   }
 
 
@@ -36,7 +40,7 @@ export default function Home() {
     const fetchText = async () => {
       if (localStorage.getItem('id') !== null) {
         setLoggedIn(true)
-        const res = await fetch('https://textshare.vercel.app/api/fetch', {
+        const res = await fetch('http://localhost:3000/api/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -46,6 +50,7 @@ export default function Home() {
         const data = await res.json()
         console.log(data)
         setType('add')
+        setCopiedText(data.text)
       }
     }
     fetchText()
@@ -55,27 +60,21 @@ export default function Home() {
   return (<>
     <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
     <div className={styles.container}>
-      <form method='POST' onSubmit={(e) => e.preventDefault()} className={styles.form}>
-        <div>
-          <label className={styles.textLabel} htmlFor="text">{loggedIn ? "Enter text To copy " : "Please Enter An Old Or New Id Below!"}</label>
-          <input
-            type="text"
-            id='text'
-            name='text'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder={loggedIn ? "Type here to send" : "Ex: Dipankaj_123singh"}
-          />
-          <button type='submit' onClick={saveToJson}>
-            <Send />
-          </button>
-        </div>
-      </form>
-      <div className={styles.prompts}>
-        <p className={styles.promptsText}>success</p>
-        <span className={styles.promptsIcon}>@</span>
+      <InputField
+        loggedIn={loggedIn}
+        setText={setText}
+        text={text}
+        saveToJson={saveToJson}
+      />
+      <p className={styles.promptsText}>success</p>
+
+      <div className={styles.copiedContainer}>
+        {copiedText && copiedText.map((v, i) => {
+          return <CopiedText text={v} />
+        })}
       </div>
     </div>
+
   </>
   )
 }

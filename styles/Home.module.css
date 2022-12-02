@@ -101,7 +101,7 @@
   transform: translate(-50%);
   left: 50%;
   height: 2.5rem;
-  top: 45%;
+  top: 25%;
 }
 
 .form div {
@@ -114,11 +114,10 @@
   width: 18rem;
   background-color: transparent;
   border: 2px solid #7c4dff;
+  border-right: none;
   outline: none;
   font-size: 1.5em;
   color: #7c4df7;
-  border-bottom-left-radius: .4rem;
-  border-top-left-radius: .4rem;
   padding: 0 .5rem;
 }
 
@@ -131,25 +130,16 @@
   background-color: #7c4dff5e;
   border-left: none;
   font-size: 1.5rem;
-  border-bottom-right-radius: .4rem;
-  border-top-right-radius: .4rem;
   cursor: pointer;
+  transition: background-color 150ms;
 }
 
 .form div button:hover {
   background-color: #7c4dff;
 }
 
-.prompts {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-top: .3rem;
-}
-
 .promptsText {
-  margin: 0;
+  margin: 3px 15px;
   padding: 0;
 }
 
@@ -158,4 +148,42 @@
   top: -1.3rem;
   margin-left: .5rem;
   color: rgb(235, 47, 0);
+}
+
+.copiedContainer {
+  border: 2px solid transparent;
+  border-top-color: #a07bfd3a;
+  padding: 10px;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+
+.copiedTextContainer {
+  display: flex;
+  padding: 5px 15px;
+  border: 1px solid transparent;
+  border-top-color: #7c4df7;
+  margin: 0;
+}
+
+.copiedTextContainer:hover {
+  background-color: #7c4dff1c;
+}
+
+.copiedTextContainer:last-child {
+  border-bottom-color: #7c4df7;
+}
+
+.copiedTextContainer button {
+  margin-left: auto;
+  height: 2.5rem;
+  width: 3rem;
+  border: none;
+  background-color: #7c4dff5e;
+  cursor: pointer;
+  transition: background-color 150ms;
+}
+
+.copiedTextContainer button:hover {
+  background-color: #7c4df7;
 }

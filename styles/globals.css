@@ -21,10 +21,10 @@ a {
   }
 }
 
-  body {
-    height: 100vh;
-    width: 100vw;
-    color: #7c4dff;
-    background-color: #d4d2f5;
-    /* background-color: #4f48e4; */
+body {
+  height: 100vh;
+  width: 100vw;
+  color: #7c4dff;
+  background-color: #e5e4f5;
+  /* background-color: #4f48e4; */
 }
