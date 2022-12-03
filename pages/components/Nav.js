@@ -8,11 +8,14 @@ function Nav({ setLoggedIn, id, setQuery, loggedIn }) {
                 <span>Share</span>
             </p>
             <div style={{ display: loggedIn ? 'flex' : "none" }}>
-                <div className={styles.Id}>{id}</div>
+                <div
+                    onClick={() => navigator.clipboard.writeText('Copy this text to clipboard')}
+                    className={styles.Id}>{id}</div>
                 <button onClick={() => {
                     localStorage.removeItem("id")
                     setLoggedIn(false)
                     setQuery(undefined)
+
                 }}>LogOut</button>
             </div>
         </nav>

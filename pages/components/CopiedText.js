@@ -4,7 +4,7 @@ function CopiedText({ text }) {
     return (
         <div className={styles.copiedTextContainer}>
             <p >{text}</p>
-            <button>copy</button>
+            <button onClick={() => navigator.clipboard.writeText(text)}>copy</button>
         </div>
     )
 }
