@@ -9,7 +9,7 @@ function Nav({ setLoggedIn, id, setQuery, loggedIn }) {
             </p>
             <div style={{ display: loggedIn ? 'flex' : "none" }}>
                 <div
-                    onClick={() => navigator.clipboard.writeText('Copy this text to clipboard')}
+                    onClick={() => navigator.clipboard.writeText(id)}
                     className={styles.Id}>{id}</div>
                 <button onClick={() => {
                     localStorage.removeItem("id")

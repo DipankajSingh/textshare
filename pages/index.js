@@ -5,7 +5,8 @@ import CopiedText from './components/CopiedText'
 import InputField from './components/InputField'
 import Head from 'next/head'
 export default function Home() {
-
+  const localUrl = 'http://localhost:3000'
+  const productionUrl = "https://textshare.vercel.app"
   const [text, setText] = useState("")
   const [loggedIn, setLoggedIn] = useState(false)
   const [type, setType] = useState(undefined)
@@ -15,7 +16,7 @@ export default function Home() {
   const saveToJson = async () => {
     if (text !== '') {
 
-      const res = await fetch('https://textshare.vercel.app/api/storedata', {
+      const res = await fetch(`${localUrl}/api/storedata`, {
         method: 'POST',
         body: JSON.stringify({ id: localStorage.getItem('id') || text, text, type }),
         headers: {
@@ -42,8 +43,9 @@ export default function Home() {
   useEffect(() => {
     const fetchText = async () => {
       if (localStorage.getItem('id') !== null) {
+        setLocalId(localStorage.getItem('id'))
         setLoggedIn(true)
-        const res = await fetch('https://textshare.vercel.app/api/fetch', {
+        const res = await fetch(`${localUrl}/api/fetch`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
