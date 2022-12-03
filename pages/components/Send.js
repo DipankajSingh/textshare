@@ -53,7 +53,7 @@ function Send({ hovered }) {
         .svg{
   height: 1.5rem;
   width: 1.5rem;
-  fill: whitesmoke;
+  fill: #919191;
 }
       `}</style>
             </svg>

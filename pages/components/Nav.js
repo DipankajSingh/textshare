@@ -4,7 +4,7 @@ function Nav({ setLoggedIn, id, setQuery, loggedIn }) {
     return (
         <nav className={styles.nav}>
             <p>
-                <span>TaxT</span>
+                <span>TexT</span>
                 <span>Share</span>
             </p>
             <div style={{ display: loggedIn ? 'flex' : "none" }}>

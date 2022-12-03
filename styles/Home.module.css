@@ -2,6 +2,9 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  position: fixed;
+  width: 100vw;
+  z-index: 100;
 }
 
 .nav>div {
@@ -12,7 +15,7 @@
 
 .Id {
   position: relative;
-  color: rgb(90, 56, 241);
+  color: hsla(var(--ui));
   margin-right: 1rem;
   font-size: 1rem;
   font-weight: 700;
@@ -22,10 +25,10 @@
 
 
 .Id::after {
-  content: 'Click To Copy Id!';
+  content: 'Click To Copy';
   padding: 8px 13px;
   width: max-content;
-  color: whitesmoke;
+  color: var(--clr);
   top: 1.9rem;
   transform: translateX(-50%) scale(0);
   border-radius: .3rem;
@@ -33,7 +36,7 @@
 
 .Id::after,
 .Id::before {
-  background-color: #7c4dff;
+  background-color: hsl(var(--ui));
   left: 50%;
   position: absolute;
   transition: transform 50ms;
@@ -58,7 +61,7 @@
 
 .nav>div>button {
   background-color: transparent;
-  border: 1px solid #7c4dff;
+  border: 1px solid hsl(var(--ui));
   margin: 0;
   font-size: 1.3rem;
   font-weight: bold;
@@ -66,16 +69,16 @@
   width: 6rem;
   cursor: pointer;
   transition: background-color 200ms, color 200ms;
-  color: #7c4dff;
+  color: hsl(var(--ui));
 }
 
 .nav>div>button:hover {
-  background-color: #7c4dff;
-  color: #f3f0e9;
+  background-color: hsl(var(--ui));
+  color: var(--clr);
 }
 
 .nav p {
-  font-size: 2.3rem;
+  font-size: 1.5rem;
   font-weight: bolder;
 }
 
@@ -83,6 +86,8 @@
 .nav p span:nth-child(2) {
   position: absolute;
   display: inline-block;
+  color: hsl(var(--ui));
+  font-family: sans-serif;
 }
 
 .nav p span:nth-child(1) {
@@ -91,8 +96,8 @@
 }
 
 .nav p span:nth-child(2) {
-  top: 2rem;
-  left: 5.2rem;
+  top: 1.65rem;
+  left: 4rem;
 }
 
 .container {
@@ -100,7 +105,9 @@
   transform: translate(-50%);
   left: 50%;
   height: 2.5rem;
-  top: 25%;
+  top: 20%;
+  height: 75%;
+  padding-bottom: 1rem;
 }
 
 .form div {
@@ -112,11 +119,11 @@
   height: 2.5rem;
   width: 18rem;
   background-color: transparent;
-  border: 2px solid #7c4dff;
+  border: 2px solid hsl(var(--ui));
   border-right: none;
   outline: none;
   font-size: 1.5em;
-  color: #7c4df7;
+  color: hsl(var(--ui) /.8);
   padding: 0 .5rem;
 }
 
@@ -125,8 +132,8 @@
   place-items: center;
   height: 2.5rem;
   width: 3rem;
-  border: 2px solid #7c4dff;
-  background-color: #7c4dff5e;
+  border: 2px solid hsl(var(--ui));
+  background-color: hsla(var(--ui));
   border-left: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -134,50 +141,60 @@
 }
 
 .form div button:hover {
-  background-color: #7c4dff;
+  background-color: hsl(var(--ui)/.8);
 }
 
 .textLabel {
   position: absolute;
-  top: -1.3rem;
-  margin-left: .5rem;
-  color: rgb(235, 47, 0);
+  top: -1.7rem;
+  margin-left: .2rem;
+  z-index: 10;
+  font-size: 1.3rem;
+  word-spacing: -5px;
 }
 
 .copiedContainer {
   border: 2px solid transparent;
-  border-top-color: #a07bfd3a;
+  border-top-color: hsl(var(--ui) / .4);
   padding: 10px;
   padding-top: 1.5rem;
   margin-top: 1rem;
+  height: 100%;
+  overflow: auto;
+  scrollbar-width: none;
+
 }
 
 .copiedTextContainer {
   display: flex;
   padding: 5px 15px;
   border: 1px solid transparent;
-  border-top-color: #7c4df7;
-  margin: 0;
+  border-right-color: hsl(var(--ui));
+  margin: 1rem 0;
+  border-left-color: hsl(var(--ui));
+  background-color: hsl(var(--ui) / .1);
+  transition: background-color 150ms;
 }
 
 .copiedTextContainer:hover {
-  background-color: #7c4dff1c;
-}
-
-.copiedTextContainer:last-child {
-  border-bottom-color: #7c4df7;
+  background-color: hsl(var(--ui) / .3);
 }
 
 .copiedTextContainer button {
   margin-left: auto;
   height: 2.5rem;
-  width: 3rem;
+  padding: 0 .7rem;
+  text-transform: capitalize;
   border: none;
-  background-color: #7c4dff5e;
+  background-color: hsl(var(--ui)/.5);
   cursor: pointer;
-  transition: background-color 150ms;
+  transition: background-color 220ms, color 220ms;
+  color: hsl(var(--hover));
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .copiedTextContainer button:hover {
-  background-color: #7c4df7;
+  background-color: hsl(var(--ui));
+  color: var(--clr);
 }
