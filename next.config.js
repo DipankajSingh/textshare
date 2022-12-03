@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-   nftTracing: true ,
+  httpAgentOptions: {
+    keepAlive: false,
+  }
 }
 
 module.exports = nextConfig

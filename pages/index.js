@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Nav from './components/Nav'
 import CopiedText from './components/CopiedText'
 import InputField from './components/InputField'
-
+import Head from 'next/head'
 export default function Home() {
 
   const [text, setText] = useState("")
@@ -60,6 +60,9 @@ export default function Home() {
 
 
   return (<>
+    <Head>
+      <title>TextShare - share your text anywhere!</title>
+    </Head>
     <Nav setLoggedIn={setLoggedIn} setQuery={setType} id={localId} loggedIn={loggedIn} />
     <div className={styles.container}>
       <InputField
