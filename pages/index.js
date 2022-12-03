@@ -15,7 +15,7 @@ export default function Home() {
   const saveToJson = async () => {
     if (text !== '') {
 
-      const res = await fetch('http://localhost:3000/api/storedata', {
+      const res = await fetch('https://textshare.vercel.app/api/storedata', {
         method: 'POST',
         body: JSON.stringify({ id: localStorage.getItem('id') || text, text, type }),
         headers: {
@@ -43,7 +43,7 @@ export default function Home() {
     const fetchText = async () => {
       if (localStorage.getItem('id') !== null) {
         setLoggedIn(true)
-        const res = await fetch('http://localhost:3000/api/fetch', {
+        const res = await fetch('https://textshare.vercel.app/api/fetch', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
