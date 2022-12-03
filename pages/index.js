@@ -16,7 +16,7 @@ export default function Home() {
   const saveToJson = async () => {
     if (text !== '') {
 
-      const res = await fetch(`${localUrl}/api/storedata`, {
+      const res = await fetch(`${productionUrl}/api/storedata`, {
         method: 'POST',
         body: JSON.stringify({ id: localStorage.getItem('id') || text, text, type }),
         headers: {
@@ -45,7 +45,7 @@ export default function Home() {
       if (localStorage.getItem('id') !== null) {
         setLocalId(localStorage.getItem('id'))
         setLoggedIn(true)
-        const res = await fetch(`${localUrl}/api/fetch`, {
+        const res = await fetch(`${productionUrl}/api/fetch`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
