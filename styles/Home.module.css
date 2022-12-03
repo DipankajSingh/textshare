@@ -58,13 +58,12 @@
 
 .nav>div>button {
   background-color: transparent;
-  border: 2px solid #7c4dff;
+  border: 1px solid #7c4dff;
   margin: 0;
   font-size: 1.3rem;
   font-weight: bold;
-  height: 2.5rem;
-  width: 8rem;
-  border-radius: 2rem;
+  height: 2rem;
+  width: 6rem;
   cursor: pointer;
   transition: background-color 200ms, color 200ms;
   color: #7c4dff;
@@ -136,11 +135,6 @@
 
 .form div button:hover {
   background-color: #7c4dff;
-}
-
-.promptsText {
-  margin: 3px 15px;
-  padding: 0;
 }
 
 .textLabel {

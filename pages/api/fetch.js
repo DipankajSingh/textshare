@@ -5,7 +5,6 @@ export default function handler(req, res) {
 
   const id = req.headers.id
   const dataPath = './database/data.json'
-  console.log(req.headers)
   fs.promises.readFile(dataPath, 'utf-8')
     .then((v) => {
       const data = JSON.parse(v)

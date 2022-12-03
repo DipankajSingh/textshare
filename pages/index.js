@@ -8,35 +8,38 @@ export default function Home() {
 
   const [text, setText] = useState("")
   const [loggedIn, setLoggedIn] = useState(false)
-  const id = loggedIn ? localStorage.getItem('id') : text
-  const [type, setType] = useState('addUser')
-  console.log(type, "the type")
-
+  const [type, setType] = useState(undefined)
   const [copiedText, setCopiedText] = useState([])
-
+  const [localId, setLocalId] = useState()
 
   const saveToJson = async () => {
-    const res = await fetch('http://localhost:3000/api/storedata', {
-      method: 'POST',
-      body: JSON.stringify({ id, text, type }),
-      headers: {
-        'Content-Type': 'application/json'
+    if (text !== '') {
+
+      const res = await fetch('http://localhost:3000/api/storedata', {
+        method: 'POST',
+        body: JSON.stringify({ id: localStorage.getItem('id') || text, text, type }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+
+      const data = await res.json()
+
+      if (localStorage.getItem('id') == null) {
+        localStorage.setItem('id', text)
+        setLoggedIn(true)
+        setType('add')
+        setLocalId(text)
       }
-    })
-    const data = await res.json()
-    if (localStorage.getItem("id") == null) {
-      localStorage.setItem('id', text)
-      setLoggedIn(true)
-      setType('add')
+
+      setText('')
+      setCopiedText(data.text)
     }
-    setText('')
-    setCopiedText(data)
-    console.log(copiedtext)
   }
 
 
   useEffect(() => {
-    console.log('rerenderd!')
     const fetchText = async () => {
       if (localStorage.getItem('id') !== null) {
         setLoggedIn(true)
@@ -48,7 +51,6 @@ export default function Home() {
           }
         })
         const data = await res.json()
-        console.log(data)
         setType('add')
         setCopiedText(data.text)
       }
@@ -58,7 +60,7 @@ export default function Home() {
 
 
   return (<>
-    <Nav setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+    <Nav setLoggedIn={setLoggedIn} setQuery={setType} id={localId} loggedIn={loggedIn} />
     <div className={styles.container}>
       <InputField
         loggedIn={loggedIn}
@@ -66,11 +68,10 @@ export default function Home() {
         text={text}
         saveToJson={saveToJson}
       />
-      <p className={styles.promptsText}>success</p>
 
       <div className={styles.copiedContainer}>
         {copiedText && copiedText.map((v, i) => {
-          return <CopiedText text={v} />
+          return <CopiedText text={v} key={i} />
         })}
       </div>
     </div>

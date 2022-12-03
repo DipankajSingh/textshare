@@ -11,19 +11,17 @@ function storedata(req, res) {
                     data[id].push(text)
                     fs.promises.writeFile(dataPath, JSON.stringify(data))
                         .then(() => {
-                            res.status(200).send({ success: true, INFO: "Text Added" })
+                            res.status(200).send({ success: true, INFO: "Text Added", text: data[id] })
                         })
                 }
-
-                else if (type === 'addUser') {
-                    fs.promises.writeFile(dataPath, JSON.stringify({ ...data, [id]: [] }))
-                        .then(() => {
-                            res.status(200).send({ success: true, INFO: 'user added' })
-                        })
-                }
-
                 else if (id in data) {
                     res.status(200).send({ success: true, text: data[id], INFO: "user found" })
+                }
+                else {
+                    fs.promises.writeFile(dataPath, JSON.stringify({ ...data, [id]: [] }))
+                        .then(() => {
+                            res.status(200).send({ success: true, text: data[id], INFO: 'user added' })
+                        })
                 }
             })
     }
