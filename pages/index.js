@@ -64,6 +64,7 @@ export default function Home() {
   return (<>
     <Head>
       <title>TextShare - share your text anywhere!</title>
+      <meta name="theme-color" content="#304ffe" />
     </Head>
     <Nav setLoggedIn={setLoggedIn} setQuery={setType} id={localId} loggedIn={loggedIn} />
     <div className={styles.container}>
