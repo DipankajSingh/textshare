@@ -5,8 +5,7 @@
   position: fixed;
   width: 100vw;
   z-index: 100;
-height:max-content;
-backdrop-filter:blur(7px);
+  height: max-content;
 }
 
 .nav>div {
@@ -119,11 +118,11 @@ backdrop-filter:blur(7px);
 
 .form div input {
   height: 2.5rem;
-  width: 18rem;
   background-color: transparent;
   border: 2px solid hsl(var(--ui));
   border-right: none;
   outline: none;
+  width: 100%;
   font-size: 1.5em;
   color: hsl(var(--ui) /.8);
   padding: 0 .5rem;
@@ -153,8 +152,8 @@ backdrop-filter:blur(7px);
   z-index: 10;
   font-size: 1.3rem;
   word-spacing: -5px;
-font-weight:bolder;
-Color:hsl(var(--ui));
+  font-weight: bolder;
+  Color: hsl(var(--ui));
 }
 
 .copiedContainer {
@@ -166,11 +165,13 @@ Color:hsl(var(--ui));
   height: 100%;
   overflow: auto;
   scrollbar-width: none;
-  max-width:18rem;
 }
+
 .copiedContainer::-webkit-scrollbar {
   display: none;
 }
+
+
 .copiedTextContainer {
   display: flex;
   padding: 5px 15px;
