@@ -6,7 +6,6 @@
   width: 100vw;
   z-index: 100;
 height:max-content;
-Background-color:hsl(var(--ui)/.3);
 backdrop-filter:blur(7px);
 }
 
