@@ -162,9 +162,11 @@
   height: 100%;
   overflow: auto;
   scrollbar-width: none;
-
+  max-width:18rem;
 }
-
+.copiedContainer::-webkit-scrollbar {
+  display: none;
+}
 .copiedTextContainer {
   display: flex;
   padding: 5px 15px;
