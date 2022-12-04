@@ -8,7 +8,7 @@ function InputField({ loggedIn, text, setText, saveToJson }) {
         <>
             <form method='POST' onSubmit={(e) => e.preventDefault()} className={styles.form}>
                 <div>
-                    <label className={styles.textLabel} htmlFor="text">{loggedIn ? "Enter text To copy " : "Please Enter An Old Or New Id Below!"}</label>
+                    <label className={styles.textLabel} htmlFor="text">{loggedIn ? "Enter text To copy " : "Enter An Existing Or New Id"}</label>
                     <input
                         type="text"
                         id='text'
