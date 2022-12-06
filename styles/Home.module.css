@@ -159,12 +159,13 @@
 .copiedContainer {
   border: 2px solid transparent;
   border-top-color: hsl(var(--ui) / .4);
-  padding: 10px;
+  padding: 1rem;
   padding-top: 1.5rem;
   margin-top: 1rem;
   height: 100%;
   overflow: auto;
   scrollbar-width: none;
+
 }
 
 .copiedContainer::-webkit-scrollbar {
