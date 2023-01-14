@@ -1,4 +1,4 @@
 const data = {
-    'Dipankaj': ['hello', 'hi']
+    'Dipankaj': ["Hello World!"]
 }
 export default data
