@@ -8,14 +8,14 @@ function InputField({ loggedIn, text, setText, saveToJson }) {
         <>
             <form method='POST' onSubmit={(e) => e.preventDefault()} className={styles.form}>
                 <div>
-                    <label className={styles.textLabel} htmlFor="text">{loggedIn ? "Enter text To copy " : "Enter An Existing Or New Id"}</label>
+                    <label className={styles.textLabel} htmlFor="text">{loggedIn ? "Share It!" : "You're Not Logged In!"}</label>
                     <input
                         type="text"
                         id='text'
                         name='text'
                         value={text}
                         onChange={(e) => setText(e.target.value)}
-                        placeholder={loggedIn ? "Type here to send" : "Ex: Dipankaj_123singh"}
+                        placeholder={loggedIn ? "You're Ready To send!" : "Unique Id Required "}
                     />
                     <button type='submit' onClick={saveToJson}>
                         <Send />

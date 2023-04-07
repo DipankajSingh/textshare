@@ -108,11 +108,13 @@
   height: 2.5rem;
   top: 20%;
   height: 75%;
+  max-width: 24rem;
   padding-bottom: 1rem;
 }
 
 .form div {
   display: flex;
+
 }
 
 

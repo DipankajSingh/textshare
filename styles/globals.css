@@ -6,9 +6,9 @@ body {
 }
 
 :root {
-  --ui: 0 0% 100%;
-  --hover: white;
-  --clr: gray;
+  --ui: 160 15% 100%;
+  --hover: rgb(239, 131, 0);
+  --clr: rgb(239, 131, 0);
 }
 
 a {
@@ -31,5 +31,52 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background: radial-gradient(circle 941px at 2.6% 6.8%, rgba(113, 53, 241, 0.986) 15.9%, rgba(245, 10, 155, 0.7) 88.6%) no-repeat;
+  background: linear-gradient(-45deg, #ee7752, #f70360, #34d410, #3f00dd);
+  background-size: 400% 400%;
+  --animation-time: 15s;
+  -webkit-animation: gradient var(--animation-time) ease infinite;
+  -moz-animation: gradient var(--animation-time) ease infinite;
+  animation: gradient var(--animation-time) ease infinite;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-moz-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }

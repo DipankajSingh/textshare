@@ -5,7 +5,7 @@ import CopiedText from './components/CopiedText'
 import InputField from './components/InputField'
 import Head from 'next/head'
 export default function Home() {
-  const localUrl = 'http://localhost:3000'
+  // const localUrl = 'http://localhost:3000'
   const productionUrl = "https://textshare.vercel.app"
   const [text, setText] = useState("")
   const [loggedIn, setLoggedIn] = useState(false)
