@@ -1,5 +1,8 @@
 const data = {
     'Dipankaj': ["Hey Dipankaj!"],
+    'Thoughts':[
+       "A man can be Linient by his Thoughts, Not to Precept of anyone."
+    ],
     'quote': [
         'The greatest glory in living lies not in never falling, but in rising every time we fall.',
         "The future belongs to those who believe in the beauty of their dreams.",
